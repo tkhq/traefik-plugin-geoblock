@@ -1,5 +1,17 @@
-FROM alpine@sha256:48d9183eb12a05c99bcc0bf44a003607b8e941e1d4f41f9ad12bdcc4b5672f86
+FROM busybox@sha256:023917ec6a886d0e8e15f28fb543515a5fcd8d938edb091e8147db4efed388ee
 
-COPY . /dist
+LABEL org.opencontainers.image.source https://github.com/tkhq/traefik-plugin-geoblock
 
-ENTRYPOINT ["/dist/deploy/install.sh"]
+RUN mkdir /dist
+
+COPY go.mod /dist/
+COPY go.sum /dist/
+COPY .traefik.yml /dist/
+COPY LICENSE /dist/
+COPY plugin.go /dist/
+COPY plugin.go /dist/
+COPY vendor /dist/
+
+COPY deploy/install.sh /
+
+ENTRYPOINT ["/install.sh"]
