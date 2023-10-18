@@ -11,6 +11,7 @@ COPY LICENSE /dist/
 COPY plugin.go /dist/
 COPY plugin.go /dist/
 COPY vendor /dist/
+COPY IP2LOCATION-LITE-DB1.IPV6.BIN /dist/
 
 COPY deploy/install.sh /
 
