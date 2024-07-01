@@ -119,7 +119,7 @@ func (p Plugin) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 			return
 		}
 		if !allowed {
-			log.Printf("%s: [%s %s %s] blocked request from %s", p.name, req.Host, req.Method, req.URL.Path, country)
+			log.Printf("%s: [%s %s %s] blocked request from %s (%s)", p.name, req.Host, req.Method, req.URL.Path, country, ip)
 			rw.WriteHeader(p.disallowedStatusCode)
 			return
 		}
